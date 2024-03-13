@@ -27,7 +27,7 @@ struct ContentView: View {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
         let service = SearchRoutesService(client: client,
-                                          apikey: apiKey)
+                                          apikey: Constants.apiKey)
         Task {
             do {
                 let routes = try await service.searchRoutes(from: "c146",
@@ -45,7 +45,7 @@ struct ContentView: View {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
         let service = ScheduleService(client: client,
-                                      apikey: apiKey)
+                                      apikey: Constants.apiKey)
         Task {
             do {
                 let schedule = try await service.getSchedule(station: "s9600213",
@@ -62,7 +62,7 @@ struct ContentView: View {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
         let service = ThreadService(client: client,
-                                    apikey: apiKey)
+                                    apikey: Constants.apiKey)
         Task {
             do {
                 let thread = try await service.getThread(uid: "176YE_7_2")
@@ -78,7 +78,7 @@ struct ContentView: View {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
         let service = NearestStationsService(client: client,
-                                             apikey: apiKey)
+                                             apikey: Constants.apiKey)
         Task {
             do {
                 let stations = try await service.getNearestStations(lat: 59.864177,
@@ -96,7 +96,7 @@ struct ContentView: View {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
         let service = NearestSettlementService(client: client,
-                                               apikey: apiKey)
+                                               apikey: Constants.apiKey)
         Task {
             do {
                 let settlement = try await service.getNearestSettlement(lat: 59.864177,
@@ -113,7 +113,7 @@ struct ContentView: View {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
         let service = CarriersService(client: client,
-                                      apikey: apiKey)
+                                      apikey: Constants.apiKey)
         Task {
             do {
                 let carriers = try await service.getCarriers(code: "680")
@@ -129,7 +129,7 @@ struct ContentView: View {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
         let service = StationsListService(client: client,
-                                          apikey: apiKey)
+                                          apikey: Constants.apiKey)
         Task {
             do {
                 let stations = try await service.getStationsList()
@@ -147,7 +147,7 @@ struct ContentView: View {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
         let service = CopyrightService(client: client,
-                                       apikey: apiKey)
+                                       apikey: Constants.apiKey)
         Task {
             do {
                 let copiright = try await service.getCopyright()
