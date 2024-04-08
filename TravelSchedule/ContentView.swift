@@ -2,23 +2,25 @@ import SwiftUI
 import OpenAPIURLSession
 
 struct ContentView: View {
+    @State private var selectedIndex = 0
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-        .onAppear {
-            search()
-            schedule()
-            thread()
-            stations()
-            settlement()
-            carrier()
-            stationsList()
-            copiright()
+        TabView(selection: $selectedIndex) {
+                    Text("First View")
+                        .tabItem {
+                            Image(.schedule)
+                                .foregroundColor(selectedIndex == 0 ? .primary : .grayUniversal)
+                        }
+                        .tag(0)
+                    
+                    Text("Second View")
+                        .tabItem {
+                            Image(.settings)
+                                .foregroundColor(selectedIndex == 0 ? .primary : .grayUniversal)
+                        }
+                        .tag(1)
+                }
+        .accentColor(.primary)
         }
     }
     
@@ -156,7 +158,6 @@ struct ContentView: View {
                 print(error)
             }
         }
-    }
 }
 
 #Preview {

@@ -11,6 +11,7 @@
 		840082652B9B575D00FE140D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840082642B9B575D00FE140D /* ContentView.swift */; };
 		840082672B9B575E00FE140D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840082662B9B575E00FE140D /* Assets.xcassets */; };
 		8400826A2B9B575E00FE140D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840082692B9B575E00FE140D /* Preview Assets.xcassets */; };
+		8422F9732BC418FD00183F56 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8422F9722BC418FD00183F56 /* SplashScreen.storyboard */; };
 		842BAE6D2B9F33C500108881 /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 842BAE6C2B9F33C500108881 /* OpenAPIRuntime */; };
 		842BAE702B9F33E800108881 /* OpenAPIURLSession in Frameworks */ = {isa = PBXBuildFile; productRef = 842BAE6F2B9F33E800108881 /* OpenAPIURLSession */; };
 		842BAE772B9F34E600108881 /* openapi-generator-config.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 842BAE762B9F34E600108881 /* openapi-generator-config.yaml */; };
@@ -32,6 +33,8 @@
 		840082642B9B575D00FE140D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		840082662B9B575E00FE140D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		840082692B9B575E00FE140D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8422F9712BC4189D00183F56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8422F9722BC418FD00183F56 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
 		842BAE762B9F34E600108881 /* openapi-generator-config.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "openapi-generator-config.yaml"; sourceTree = "<group>"; };
 		842BAE7A2B9F372E00108881 /* NearestStationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestStationsService.swift; sourceTree = "<group>"; };
 		842BAE7C2B9F3B5400108881 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -77,6 +80,8 @@
 		840082612B9B575D00FE140D /* TravelSchedule */ = {
 			isa = PBXGroup;
 			children = (
+				8422F9712BC4189D00183F56 /* Info.plist */,
+				8422F9722BC418FD00183F56 /* SplashScreen.storyboard */,
 				84DB71D62BA08ACF0064A3D2 /* OpenAPI */,
 				842BAE732B9F34A800108881 /* Service */,
 				840082622B9B575D00FE140D /* TravelScheduleApp.swift */,
@@ -199,6 +204,7 @@
 				8400826A2B9B575E00FE140D /* Preview Assets.xcassets in Resources */,
 				842BAE7F2B9F3FB400108881 /* openapi.yaml in Resources */,
 				842BAE772B9F34E600108881 /* openapi-generator-config.yaml in Resources */,
+				8422F9732BC418FD00183F56 /* SplashScreen.storyboard in Resources */,
 				840082672B9B575E00FE140D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -364,9 +370,10 @@
 				DEVELOPMENT_TEAM = H2L9U6M2SX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TravelSchedule/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = SplashScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -398,9 +405,10 @@
 				DEVELOPMENT_TEAM = H2L9U6M2SX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TravelSchedule/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = SplashScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
