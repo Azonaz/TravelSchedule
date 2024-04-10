@@ -9,14 +9,12 @@ struct ContentView: View {
                     Text("First View")
                         .tabItem {
                             Image(.schedule)
-                                .foregroundColor(selectedIndex == 0 ? .primary : .grayUniversal)
                         }
                         .tag(0)
                     
-                    Text("Second View")
+                    SettingsView()
                         .tabItem {
                             Image(.settings)
-                                .foregroundColor(selectedIndex == 0 ? .primary : .grayUniversal)
                         }
                         .tag(1)
                 }

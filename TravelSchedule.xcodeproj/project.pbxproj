@@ -12,6 +12,8 @@
 		840082672B9B575E00FE140D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840082662B9B575E00FE140D /* Assets.xcassets */; };
 		8400826A2B9B575E00FE140D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 840082692B9B575E00FE140D /* Preview Assets.xcassets */; };
 		8422F9732BC418FD00183F56 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8422F9722BC418FD00183F56 /* SplashScreen.storyboard */; };
+		8422F9782BC425EE00183F56 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8422F9772BC425EE00183F56 /* SettingsView.swift */; };
+		8422F97B2BC4318200183F56 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8422F97A2BC4318200183F56 /* Fonts.swift */; };
 		842BAE6D2B9F33C500108881 /* OpenAPIRuntime in Frameworks */ = {isa = PBXBuildFile; productRef = 842BAE6C2B9F33C500108881 /* OpenAPIRuntime */; };
 		842BAE702B9F33E800108881 /* OpenAPIURLSession in Frameworks */ = {isa = PBXBuildFile; productRef = 842BAE6F2B9F33E800108881 /* OpenAPIURLSession */; };
 		842BAE772B9F34E600108881 /* openapi-generator-config.yaml in Resources */ = {isa = PBXBuildFile; fileRef = 842BAE762B9F34E600108881 /* openapi-generator-config.yaml */; };
@@ -35,6 +37,8 @@
 		840082692B9B575E00FE140D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8422F9712BC4189D00183F56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8422F9722BC418FD00183F56 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
+		8422F9772BC425EE00183F56 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		8422F97A2BC4318200183F56 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		842BAE762B9F34E600108881 /* openapi-generator-config.yaml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = "openapi-generator-config.yaml"; sourceTree = "<group>"; };
 		842BAE7A2B9F372E00108881 /* NearestStationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestStationsService.swift; sourceTree = "<group>"; };
 		842BAE7C2B9F3B5400108881 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 				842BAE732B9F34A800108881 /* Service */,
 				840082622B9B575D00FE140D /* TravelScheduleApp.swift */,
 				840082642B9B575D00FE140D /* ContentView.swift */,
+				8422F9772BC425EE00183F56 /* SettingsView.swift */,
 				84DB71D42BA08AB60064A3D2 /* Helpers */,
 				840082662B9B575E00FE140D /* Assets.xcassets */,
 				840082682B9B575E00FE140D /* Preview Content */,
@@ -120,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				842BAE7C2B9F3B5400108881 /* Constants.swift */,
+				8422F97A2BC4318200183F56 /* Fonts.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -218,6 +224,7 @@
 			files = (
 				84DB71D92BA08B240064A3D2 /* SearchRoutesService.swift in Sources */,
 				84DB71E52BA08F540064A3D2 /* CopyrightService.swift in Sources */,
+				8422F97B2BC4318200183F56 /* Fonts.swift in Sources */,
 				84DB71DF2BA08DA80064A3D2 /* NearestSettlementService.swift in Sources */,
 				84DB71DD2BA08D020064A3D2 /* ThreadServise.swift in Sources */,
 				840082652B9B575D00FE140D /* ContentView.swift in Sources */,
@@ -225,6 +232,7 @@
 				842BAE7B2B9F372E00108881 /* NearestStationsService.swift in Sources */,
 				840082632B9B575D00FE140D /* TravelScheduleApp.swift in Sources */,
 				84DB71E12BA08E2A0064A3D2 /* CarriersService.swift in Sources */,
+				8422F9782BC425EE00183F56 /* SettingsView.swift in Sources */,
 				84DB71DB2BA08C380064A3D2 /* ScheduleServise.swift in Sources */,
 				842BAE7D2B9F3B5400108881 /* Constants.swift in Sources */,
 			);
@@ -376,7 +384,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = SplashScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,7 +419,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = SplashScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
