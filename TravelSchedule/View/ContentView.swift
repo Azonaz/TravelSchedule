@@ -2,17 +2,8 @@ import SwiftUI
 import OpenAPIURLSession
 
 struct ContentView: View {
-    @State private var selectedIndex = 0
-
     var body: some View {
-        VStack {
-            Text("First View")
-                .tabItem {
-                    Image(.schedule)
-                }
-                .tag(0)
-                .accentColor(.primary)
-        }
+        StoryPreView()
     }
 }
 
