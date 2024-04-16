@@ -2,12 +2,13 @@ import SwiftUI
 
 struct SelectStationView: View {
     let city: City
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     var body: some View {
         ZStack {
             SearchBarView()
             List(city.stations, id: \.self) { station in
-                NavigationLink(destination: ContentView()) {
+                NavigationLink(destination: TabBarView()) {
                     Text(station)
                 }
                 .listRowSeparator(.hidden)
@@ -17,8 +18,17 @@ struct SelectStationView: View {
             .padding(.top, 70)
         }
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(leading: BackButton())
+        .navigationBarItems(leading: backButton)
         .navigationBarTitle("Выбор станции", displayMode: .inline)
+    }
+
+    private var backButton: some View {
+        Button(action: {
+            presentationMode.wrappedValue.dismiss()
+        }, label: {
+            Image(systemName: "chevron.left")
+                .foregroundColor(Color(.label))
+        })
     }
 }
 
