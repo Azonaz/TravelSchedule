@@ -1,17 +1,23 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var viewModel = ScheduleViewModel()
+
     var body: some View {
-        StoryPreView()
-        ZStack {
-            BlueRectangle()
-            HStack {
-                WhiteRectangle()
-                Spacer()
-                ReplaceCircle()
+        NavigationStack {
+            VStack {
+                StoryPreView()
+                ZStack {
+                    BlueRectangle()
+                    HStack {
+                        WhiteRectangle()
+                        Spacer()
+                        ReplaceCircle()
+                    }
+                }
+                FindButton()
             }
         }
-        FindButton()
     }
 }
 
@@ -56,31 +62,27 @@ struct ReplaceCircle: View {
 
 struct FromButton: View {
     var body: some View {
-        Button(action: {
-
-        }, label: {
+        NavigationLink(destination: SelectCityView().navigationBarTitle("Выбор города")) {
             Text("Откуда")
-        })
-        .foregroundColor(.grayUniversal)
-        .font(.regular17)
-        .lineLimit(1)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding([.leading, .trailing], 16)
+                .foregroundColor(.grayUniversal)
+                .font(.regular17)
+                .lineLimit(1)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding([.leading, .trailing], 16)
+        }
     }
 }
 
 struct ToButton: View {
     var body: some View {
-        Button(action: {
-
-        }, label: {
+        NavigationLink(destination: SelectCityView().navigationBarTitle("Выбор города")) {
             Text("Куда")
-        })
-        .foregroundColor(.grayUniversal)
-        .font(.regular17)
-        .lineLimit(1)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .padding([.leading, .trailing], 16)
+                .foregroundColor(.grayUniversal)
+                .font(.regular17)
+                .lineLimit(1)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding([.leading, .trailing], 16)
+        }
     }
 }
 

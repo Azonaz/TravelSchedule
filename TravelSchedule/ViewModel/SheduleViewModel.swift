@@ -1,8 +1,21 @@
 import Foundation
 import OpenAPIURLSession
 
-final class ScheduleViewModel {
-   
+final class ScheduleViewModel: ObservableObject {
+    @Published var cities: [City]
+
+    init() {
+        self.cities = [
+            City(name: "Москва", stations: ["Ленинградский вокзал", "Киевский вокзал", "Казанский вокзал",
+                                            "Курский вокзал", "Ярославский вокзал", "Белорусский вокзал"]),
+            City(name: "Санкт-Петербург", stations: ["Московский вокзал", "Ладожский вокзал", "Витебский вокзал",
+                                                     "Балтийский вокзал", "Финляндский вокзал"]),
+            City(name: "Новосибирск", stations: ["Новосибирск-восточный", "Новосибирск-главный",
+                                                 "Новосибирск-западный"]),
+            City(name: "Великий Новгород", stations: ["Великий Новгород", "Новгород-Лужский"])
+        ]
+    }
+
     // swiftlint:disable force_try
     // Расписание рейсов между станциями
     func search() {

@@ -1,8 +1,23 @@
 import SwiftUI
 
 struct SelectCityView: View {
+    @StateObject var viewModel = ScheduleViewModel()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            SearchBarView()
+            List(viewModel.cities, id: \.name) { city in
+                NavigationLink(destination: SelectStationView(city: city)) {
+                    Text(city.name)
+                }
+                .listRowSeparator(.hidden)
+            }
+            .listStyle(.inset)
+            .scrollContentBackground(.hidden)
+            .padding(.top, 70)
+        }
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: BackButton())
     }
 }
 

@@ -2,18 +2,42 @@ import SwiftUI
 import WebKit
 
 struct AgreementView: View {
+    @ObservedObject var viewModel = SettingsViewModel()
     let agreementLink = "https://yandex.ru/legal/practicum_offer"
 
     var body: some View {
-        if let url = URL(string: agreementLink) {
-            WebView(url: url)
-                .navigationBarTitle("Пользовательское соглашение", displayMode: .inline)
-                .navigationBarBackButtonHidden(true)
-                .navigationBarItems(leading: BackButton())
-                .foregroundColor(.black)
-                .edgesIgnoringSafeArea(.all)
-        } else {
-            Text("Невозможно загрузить пользовательское соглашение.")
+        ZStack {
+            Color.whiteDay.edgesIgnoringSafeArea(.all)
+            VStack(spacing: 0) {
+                HStack {
+                    BackButton()
+                    Text("Пользовательское соглашение")
+                        .foregroundColor(.blackDay)
+                        .font(.bold17)
+                        .lineLimit(1)
+                        .padding(.leading, 24)
+                    Spacer()
+                }
+                .padding(.horizontal, 8)
+                .padding([.top, .bottom], 8)
+                if viewModel.isInternetAvailable {
+                    if let url = URL(string: agreementLink) {
+                        WebView(url: url)
+                            .foregroundColor(.primary)
+                            .edgesIgnoringSafeArea(.all)
+                    } else {
+                        NoInternet()
+                    }
+                } else {
+                    Spacer()
+                    NoInternet()
+                    Spacer()
+                }
+            }
+        }
+        .navigationBarHidden(true)
+        .onAppear {
+            viewModel.monitorInternetConnection()
         }
     }
 }
