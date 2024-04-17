@@ -2,8 +2,8 @@ import SwiftUI
 import WebKit
 
 struct AgreementView: View {
-    @ObservedObject var viewModel = SettingsViewModel()
     let agreementLink = "https://yandex.ru/legal/practicum_offer"
+    @ObservedObject var viewModel = SettingsViewModel()
 
     var body: some View {
         ZStack {

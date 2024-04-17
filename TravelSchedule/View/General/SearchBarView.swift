@@ -1,31 +1,42 @@
 import SwiftUI
 
 struct SearchBarView: View {
-    @State private var searchText = ""
+    @Binding var searchText: String
 
     var body: some View {
         VStack {
-            TextField("Введите запрос", text: $searchText)
-                .padding(.leading, 30)
-                .padding(10)
-                .background(
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.lightGrayDay)
-                        .overlay(
-                            HStack {
-                                Image(systemName: "magnifyingglass")
-                                    .foregroundColor(.grayUniversal)
-                                    .padding(.leading, 10)
-                                Spacer()
-                            }
-                        )
-                )
-                .padding(.horizontal)
+            HStack {
+                TextField("Введите запрос", text: $searchText)
+                    .padding(.leading, 30)
+                    .padding(.vertical, 10)
+                if !searchText.isEmpty {
+                    Button(action: {
+                        searchText = ""
+                    }, label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.grayUniversal)
+                            .padding(.trailing, 10)
+                    })
+                }
+            }
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.lightGrayDay)
+                    .overlay(
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.grayUniversal)
+                                .padding(.leading, 10)
+                            Spacer()
+                        }
+                    )
+            )
+            .padding(.horizontal)
             Spacer()
         }
     }
 }
 
 #Preview {
-    SearchBarView()
+    SearchBarView(searchText: .constant(""))
 }
