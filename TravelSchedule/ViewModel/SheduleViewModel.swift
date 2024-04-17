@@ -8,6 +8,8 @@ enum SelectionType {
 
 final class ScheduleViewModel: ObservableObject {
     @Published var cities: [City]
+    @Published var routes: [Route]
+    @Published var carriers: [Carrier]
     @Published var selectedFromCity: City?
     @Published var selectedFromStation: String?
     @Published var selectedToCity: City?
@@ -23,6 +25,18 @@ final class ScheduleViewModel: ObservableObject {
                                                  "Новосибирск-западный"]),
             City(name: "Санкт-Петербург", stations: ["Московский вокзал", "Ладожский вокзал", "Витебский вокзал",
                                                      "Балтийский вокзал", "Финляндский вокзал"])
+        ]
+        self.routes = [
+            Route(carrierLogo: "rzdLogo", carrierName: "РЖД", transferCity: "С пересадкой в Костроме",
+                    dateString: "14 января", startTime: "22:30", finishTime: "08:15", travelDuration: "20 часов"),
+            Route(carrierLogo: "rzdLogo", carrierName: "РЖД", transferCity: "", dateString: "15 января",
+                    startTime: "00:30", finishTime: "09:15", travelDuration: "18 часов"),
+            Route(carrierLogo: "rzdLogo", carrierName: "РЖД", transferCity: "", dateString: "17 января",
+                    startTime: "22:30", finishTime: "07:15", travelDuration: "19 часов")
+        ]
+        self.carriers = [
+            Carrier(carrierLogo: "rzdLogoBig", carrierName: "ОАО «РЖД»",
+                    email: "i.lozgkina@yandex.ru", phone: "+7 (904) 329-27-71")
         ]
     }
 

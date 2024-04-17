@@ -5,6 +5,7 @@ struct ContentView: View {
     @State private var fromSelectionType: SelectionType?
     @State private var toSelectionType: SelectionType?
     @State private var rotationDegrees = 0.0
+    @State private var isFindButtonTapped = false
 
     var body: some View {
         NavigationStack {
@@ -67,7 +68,7 @@ struct ContentView: View {
                        tag: SelectionType.departure, selection: $fromSelectionType) {
             Text(viewModel.fromText())
                 .foregroundColor(viewModel.selectedFromStation == nil
-                                 ? .grayUniversal : .blackDay)
+                                 ? .grayUniversal : .black)
                 .font(.regular17)
                 .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -80,7 +81,7 @@ struct ContentView: View {
                        tag: SelectionType.arrival, selection: $toSelectionType) {
             Text(viewModel.toText())
                 .foregroundColor(viewModel.selectedToStation == nil
-                                 ? .grayUniversal : .blackDay)
+                                 ? .grayUniversal : .black)
                 .font(.regular17)
                 .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -89,19 +90,21 @@ struct ContentView: View {
     }
 
     private var findButton: some View {
-        Button(action: {
-
-        }, label: {
-            Text("Найти")
-                .foregroundColor(.white)
-                .font(.bold17)
-        })
-        .frame(width: 150, height: 60)
-        .background(.blueUniversal)
-        .cornerRadius(16)
-        .padding(.vertical, 8)
-        .opacity(viewModel.selectedFromCity != nil && viewModel.selectedToCity != nil ? 1 : 0)
-        .disabled(!(viewModel.selectedFromCity != nil && viewModel.selectedToCity != nil))
+        NavigationLink(destination: RoutesListView(), isActive: $isFindButtonTapped) {
+            Button(action: {
+                isFindButtonTapped = true
+            }, label: {
+                Text("Найти")
+                    .foregroundColor(.white)
+                    .font(.bold17)
+            })
+            .frame(width: 150, height: 60)
+            .background(.blueUniversal)
+            .cornerRadius(16)
+            .padding(.vertical, 8)
+            .opacity(viewModel.selectedFromCity != nil && viewModel.selectedToCity != nil ? 1 : 0)
+            .disabled(!(viewModel.selectedFromCity != nil && viewModel.selectedToCity != nil))
+        }
     }
 }
 
