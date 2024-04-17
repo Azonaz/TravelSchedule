@@ -4,6 +4,7 @@ struct ContentView: View {
     @EnvironmentObject var viewModel: ScheduleViewModel
     @State private var fromSelectionType: SelectionType?
     @State private var toSelectionType: SelectionType?
+    @State private var rotationDegrees = 0.0
 
     var body: some View {
         NavigationStack {
@@ -48,17 +49,22 @@ struct ContentView: View {
             .fill(Color.white)
             .frame(width: 36)
             .overlay(
-                Image(.change)
+                Image(systemName: "arrow.2.squarepath")
                     .foregroundStyle(Color.blueUniversal)
-                    .onTapGesture {
-                    }
             )
+            .rotationEffect(.degrees(rotationDegrees))
             .padding(.trailing, 32)
+            .onTapGesture {
+                withAnimation(.spring(response: 0.3, dampingFraction: 0.5, blendDuration: 0)) {
+                    rotationDegrees += 180
+                    viewModel.swapStations()
+                }
+            }
     }
 
     private var fromButton: some View {
-        NavigationLink(destination: SelectCityView(selectionType: .from).navigationBarTitle("Выбор города"),
-                       tag: SelectionType.from, selection: $fromSelectionType) {
+        NavigationLink(destination: SelectCityView(selectionType: .departure).navigationBarTitle("Выбор города"),
+                       tag: SelectionType.departure, selection: $fromSelectionType) {
             Text(viewModel.fromText())
                 .foregroundColor(viewModel.selectedFromStation == nil
                                  ? .grayUniversal : .blackDay)
@@ -70,8 +76,8 @@ struct ContentView: View {
     }
 
     private var toButton: some View {
-        NavigationLink(destination: SelectCityView(selectionType: .to).navigationBarTitle("Выбор города"),
-                       tag: SelectionType.to, selection: $toSelectionType) {
+        NavigationLink(destination: SelectCityView(selectionType: .arrival).navigationBarTitle("Выбор города"),
+                       tag: SelectionType.arrival, selection: $toSelectionType) {
             Text(viewModel.toText())
                 .foregroundColor(viewModel.selectedToStation == nil
                                  ? .grayUniversal : .blackDay)
@@ -94,6 +100,8 @@ struct ContentView: View {
         .background(.blueUniversal)
         .cornerRadius(16)
         .padding(.vertical, 8)
+        .opacity(viewModel.selectedFromCity != nil && viewModel.selectedToCity != nil ? 1 : 0)
+        .disabled(!(viewModel.selectedFromCity != nil && viewModel.selectedToCity != nil))
     }
 }
 

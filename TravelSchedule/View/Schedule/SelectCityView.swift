@@ -17,11 +17,12 @@ struct SelectCityView: View {
             .scrollContentBackground(.hidden)
             .padding(.top, 70)
         }
+        .navigationBarTitle("Выбор города", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton())
     }
 }
 
 #Preview {
-    SelectCityView(selectionType: .from)
+    SelectCityView(selectionType: .departure)
 }

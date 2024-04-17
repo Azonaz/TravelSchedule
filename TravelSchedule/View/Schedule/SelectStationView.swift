@@ -17,10 +17,10 @@ struct SelectStationView: View {
                 .listRowSeparator(.hidden)
                 .onTapGesture {
                     switch selectionType {
-                    case .from:
+                    case .departure:
                         viewModel.selectedFromCity = city
                         viewModel.selectedFromStation = station
-                    case .to:
+                    case .arrival:
                         viewModel.selectedToCity = city
                         viewModel.selectedToStation = station
                     }
@@ -47,6 +47,6 @@ struct SelectStationView: View {
 }
 
 #Preview {
-    SelectStationView(city: City(name: "Москва", stations: ["Ленинградский вокзал", "Киевский вокзал"]), 
-                      selectionType: .from)
+    SelectStationView(city: City(name: "Москва", stations: ["Ленинградский вокзал", "Киевский вокзал"]),
+                      selectionType: .departure)
 }

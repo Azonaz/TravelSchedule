@@ -2,8 +2,8 @@ import Foundation
 import OpenAPIURLSession
 
 enum SelectionType {
-    case from
-    case to
+    case departure
+    case arrival
 }
 
 final class ScheduleViewModel: ObservableObject {
@@ -40,6 +40,15 @@ final class ScheduleViewModel: ObservableObject {
         return "\(city.name) (\(station))"
     }
 
+    func swapStations() {
+        let tempCity = selectedFromCity
+        let tempStation = selectedFromStation
+        selectedFromCity = selectedToCity
+        selectedFromStation = selectedToStation
+        selectedToCity = tempCity
+        selectedToStation = tempStation
+    }
+
     // swiftlint:disable force_try
     // Расписание рейсов между станциями
     func search() {
@@ -49,8 +58,8 @@ final class ScheduleViewModel: ObservableObject {
                                           apikey: Constants.apiKey)
         Task {
             do {
-                let routes = try await service.searchRoutes(from: "c146",
-                                                            to: "c213",
+                let routes = try await service.searchRoutes(fromCity: "c146",
+                                                            toCity: "c213",
                                                             date: "2024-03-12")
                 print(routes)
             } catch {
