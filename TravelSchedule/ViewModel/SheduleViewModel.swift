@@ -1,19 +1,43 @@
 import Foundation
 import OpenAPIURLSession
 
+enum SelectionType {
+    case from
+    case to
+}
+
 final class ScheduleViewModel: ObservableObject {
     @Published var cities: [City]
+    @Published var selectedFromCity: City?
+    @Published var selectedFromStation: String?
+    @Published var selectedToCity: City?
+    @Published var selectedToStation: String?
+    @Published var selectionType: SelectionType?
 
     init() {
         self.cities = [
+            City(name: "Великий Новгород", stations: ["Великий Новгород", "Новгород-Лужский"]),
             City(name: "Москва", stations: ["Ленинградский вокзал", "Киевский вокзал", "Казанский вокзал",
                                             "Курский вокзал", "Ярославский вокзал", "Белорусский вокзал"]),
-            City(name: "Санкт-Петербург", stations: ["Московский вокзал", "Ладожский вокзал", "Витебский вокзал",
-                                                     "Балтийский вокзал", "Финляндский вокзал"]),
             City(name: "Новосибирск", stations: ["Новосибирск-восточный", "Новосибирск-главный",
                                                  "Новосибирск-западный"]),
-            City(name: "Великий Новгород", stations: ["Великий Новгород", "Новгород-Лужский"])
+            City(name: "Санкт-Петербург", stations: ["Московский вокзал", "Ладожский вокзал", "Витебский вокзал",
+                                                     "Балтийский вокзал", "Финляндский вокзал"])
         ]
+    }
+
+    func fromText() -> String {
+        guard let city = selectedFromCity, let station = selectedFromStation else {
+            return "Откуда"
+        }
+        return "\(city.name) (\(station))"
+    }
+
+    func toText() -> String {
+        guard let city = selectedToCity, let station = selectedToStation else {
+            return "Куда"
+        }
+        return "\(city.name) (\(station))"
     }
 
     // swiftlint:disable force_try

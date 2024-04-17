@@ -1,13 +1,14 @@
 import SwiftUI
 
 struct SelectCityView: View {
-    @StateObject var viewModel = ScheduleViewModel()
+    let selectionType: SelectionType
+    @EnvironmentObject var viewModel: ScheduleViewModel
 
     var body: some View {
         ZStack {
             SearchBarView()
             List(viewModel.cities, id: \.name) { city in
-                NavigationLink(destination: SelectStationView(city: city)) {
+                NavigationLink(destination: SelectStationView(city: city, selectionType: selectionType)) {
                     Text(city.name)
                 }
                 .listRowSeparator(.hidden)
@@ -22,5 +23,5 @@ struct SelectCityView: View {
 }
 
 #Preview {
-    SelectCityView()
+    SelectCityView(selectionType: .from)
 }

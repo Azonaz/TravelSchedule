@@ -1,17 +1,31 @@
 import SwiftUI
 
 struct SelectStationView: View {
+    @EnvironmentObject var viewModel: ScheduleViewModel
     let city: City
+    let selectionType: SelectionType
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State private var isNavigationActive = false
 
     var body: some View {
         ZStack {
             SearchBarView()
             List(city.stations, id: \.self) { station in
-                NavigationLink(destination: TabBarView()) {
+                NavigationLink(destination: TabBarView(), isActive: $isNavigationActive) {
                     Text(station)
                 }
                 .listRowSeparator(.hidden)
+                .onTapGesture {
+                    switch selectionType {
+                    case .from:
+                        viewModel.selectedFromCity = city
+                        viewModel.selectedFromStation = station
+                    case .to:
+                        viewModel.selectedToCity = city
+                        viewModel.selectedToStation = station
+                    }
+                    isNavigationActive = true
+                }
             }
             .listStyle(.inset)
             .scrollContentBackground(.hidden)
@@ -33,5 +47,6 @@ struct SelectStationView: View {
 }
 
 #Preview {
-    SelectStationView(city: City(name: "Москва", stations: ["Ленинградский вокзал", "Киевский вокзал"]))
+    SelectStationView(city: City(name: "Москва", stations: ["Ленинградский вокзал", "Киевский вокзал"]), 
+                      selectionType: .from)
 }

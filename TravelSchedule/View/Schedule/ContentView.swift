@@ -1,53 +1,49 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var viewModel = ScheduleViewModel()
+    @EnvironmentObject var viewModel: ScheduleViewModel
+    @State private var fromSelectionType: SelectionType?
+    @State private var toSelectionType: SelectionType?
 
     var body: some View {
         NavigationStack {
             VStack {
                 StoryPreView()
                 ZStack {
-                    BlueRectangle()
+                    blueRectangle
                     HStack {
-                        WhiteRectangle()
+                        whiteRectangle
                         Spacer()
-                        ReplaceCircle()
+                        replaceCircle
                     }
                 }
-                FindButton()
+                findButton
             }
             .navigationBarHidden(true)
         }
     }
-}
 
-struct BlueRectangle: View {
-    var body: some View {
+    private var blueRectangle: some View {
         RoundedRectangle(cornerRadius: 16)
             .fill(Color.blueUniversal)
             .frame(height: 128)
             .padding(.horizontal, 16)
     }
-}
 
-struct WhiteRectangle: View {
-    var body: some View {
+    private var whiteRectangle: some View {
         RoundedRectangle(cornerRadius: 16)
             .fill(Color.white)
             .frame(height: 96)
             .overlay(
                 VStack(alignment: .leading, spacing: 28) {
-                    FromButton()
-                    ToButton()
+                    fromButton
+                    toButton
                 }
             )
             .padding(.leading, 32)
     }
-}
 
-struct ReplaceCircle: View {
-    var body: some View {
+    private var replaceCircle: some View {
         Circle()
             .fill(Color.white)
             .frame(width: 36)
@@ -59,36 +55,34 @@ struct ReplaceCircle: View {
             )
             .padding(.trailing, 32)
     }
-}
 
-struct FromButton: View {
-    var body: some View {
-        NavigationLink(destination: SelectCityView().navigationBarTitle("Выбор города")) {
-            Text("Откуда")
-                .foregroundColor(.grayUniversal)
+    private var fromButton: some View {
+        NavigationLink(destination: SelectCityView(selectionType: .from).navigationBarTitle("Выбор города"),
+                       tag: SelectionType.from, selection: $fromSelectionType) {
+            Text(viewModel.fromText())
+                .foregroundColor(viewModel.selectedFromStation == nil
+                                 ? .grayUniversal : .blackDay)
                 .font(.regular17)
                 .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding([.leading, .trailing], 16)
         }
     }
-}
 
-struct ToButton: View {
-    var body: some View {
-        NavigationLink(destination: SelectCityView().navigationBarTitle("Выбор города")) {
-            Text("Куда")
-                .foregroundColor(.grayUniversal)
+    private var toButton: some View {
+        NavigationLink(destination: SelectCityView(selectionType: .to).navigationBarTitle("Выбор города"),
+                       tag: SelectionType.to, selection: $toSelectionType) {
+            Text(viewModel.toText())
+                .foregroundColor(viewModel.selectedToStation == nil
+                                 ? .grayUniversal : .blackDay)
                 .font(.regular17)
                 .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding([.leading, .trailing], 16)
         }
     }
-}
 
-struct FindButton: View {
-    var body: some View {
+    private var findButton: some View {
         Button(action: {
 
         }, label: {
