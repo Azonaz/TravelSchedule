@@ -11,7 +11,7 @@ struct SortRoutesView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Время отправления")
+            Text(Constants.departureTime)
                 .font(.bold24)
                 .foregroundColor(.blackDay)
                 .padding(.top, 24)
@@ -51,7 +51,7 @@ struct SortRoutesView: View {
             }
             .listStyle(.inset)
 
-            Text("Показывать варианты с пересадками")
+            Text(Constants.showTransfer)
                 .font(.bold24)
                 .foregroundColor(.blackDay)
                 .padding(.horizontal, 24)
@@ -106,7 +106,7 @@ struct SortRoutesView: View {
             Button(action: {
                 presentationMode.wrappedValue.dismiss()
             }, label: {
-                Text("Применить")
+                Text(Constants.apply)
                     .foregroundColor(.white)
                     .font(.bold17)
             })

@@ -7,7 +7,7 @@ struct SettingsView: View {
         VStack {
             List {
                 Toggle(isOn: $isDarkModeOn) {
-                    Text("Темная тема")
+                    Text(Constants.darkTheme)
                 }
                 .toggleStyle(SwitchToggleStyle(tint: .blue))
                 .listRowSeparator(.hidden)
@@ -21,7 +21,7 @@ struct SettingsView: View {
                 }
 
                 NavigationLink(destination: AgreementView()) {
-                    Text("Пользовательское соглашение")
+                    Text(Constants.userAgreement)
                         .font(.regular17)
                         .padding(.vertical, 10)
                 }
@@ -31,11 +31,11 @@ struct SettingsView: View {
             .listStyle(.inset)
             Spacer()
 
-            Text("Приложение использует API «Яндекс.Расписания»")
+            Text(Constants.infoYandex)
                 .font(.regular12)
                 .padding()
 
-            Text("Версия 1.0 (beta)")
+            Text(Constants.version)
                 .font(.regular12)
         }
         .padding()

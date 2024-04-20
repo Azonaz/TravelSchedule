@@ -11,7 +11,7 @@ struct SelectCityView: View {
             filteredCitiesList
                 .padding(.top, 70)
         }
-        .navigationBarTitle("Выбор города", displayMode: .inline)
+        .navigationBarTitle(Constants.selectCity, displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton())
     }
@@ -21,7 +21,7 @@ struct SelectCityView: View {
             searchText.isEmpty || city.name.localizedCaseInsensitiveContains(searchText)
         }
         return filteredCities.isEmpty ?
-        AnyView(Text("Город не найден")
+        AnyView(Text(Constants.cityNotFound)
             .foregroundColor(.blackDay)
             .font(.bold24)
             .padding()) :

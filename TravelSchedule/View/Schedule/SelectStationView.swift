@@ -16,7 +16,7 @@ struct SelectStationView: View {
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: backButton)
-        .navigationBarTitle("Выбор станции", displayMode: .inline)
+        .navigationBarTitle(Constants.selectStation, displayMode: .inline)
     }
 
     private var backButton: some View {
@@ -34,7 +34,7 @@ struct SelectStationView: View {
         }
         return filteredStations.isEmpty ?
         AnyView(
-            Text("Станции не найдены")
+            Text(Constants.stationNotFound)
                 .foregroundColor(.blackDay)
                 .font(.bold24)
                 .padding()

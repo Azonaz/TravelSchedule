@@ -64,7 +64,7 @@ struct ContentView: View {
     }
 
     private var fromButton: some View {
-        NavigationLink(destination: SelectCityView(selectionType: .departure).navigationBarTitle("Выбор города"),
+        NavigationLink(destination: SelectCityView(selectionType: .departure).navigationBarTitle(Constants.selectCity),
                        tag: SelectionType.departure, selection: $fromSelectionType) {
             Text(viewModel.fromText())
                 .foregroundColor(viewModel.selectedFromStation == nil
@@ -77,7 +77,7 @@ struct ContentView: View {
     }
 
     private var toButton: some View {
-        NavigationLink(destination: SelectCityView(selectionType: .arrival).navigationBarTitle("Выбор города"),
+        NavigationLink(destination: SelectCityView(selectionType: .arrival).navigationBarTitle(Constants.selectCity),
                        tag: SelectionType.arrival, selection: $toSelectionType) {
             Text(viewModel.toText())
                 .foregroundColor(viewModel.selectedToStation == nil
@@ -94,7 +94,7 @@ struct ContentView: View {
             Button(action: {
                 isFindButtonTapped = true
             }, label: {
-                Text("Найти")
+                Text(Constants.find)
                     .foregroundColor(.white)
                     .font(.bold17)
             })

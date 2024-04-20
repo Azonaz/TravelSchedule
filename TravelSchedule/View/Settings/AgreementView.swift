@@ -11,7 +11,7 @@ struct AgreementView: View {
             VStack(spacing: 0) {
                 HStack {
                     BackButton()
-                    Text("Пользовательское соглашение")
+                    Text(Constants.userAgreement)
                         .foregroundColor(.blackDay)
                         .font(.bold17)
                         .lineLimit(1)

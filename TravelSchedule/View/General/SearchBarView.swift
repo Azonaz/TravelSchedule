@@ -6,7 +6,7 @@ struct SearchBarView: View {
     var body: some View {
         VStack {
             HStack {
-                TextField("Введите запрос", text: $searchText)
+                TextField(Constants.enterRequest, text: $searchText)
                     .padding(.leading, 30)
                     .padding(.vertical, 10)
                 if !searchText.isEmpty {

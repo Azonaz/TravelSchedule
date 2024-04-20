@@ -38,7 +38,7 @@ struct RoutesListView: View {
             Button(action: {
                 isSortButtonTapped = true
             }, label: {
-                Text("Уточнить время")
+                Text(Constants.specifyTime)
                     .foregroundColor(.white)
                     .font(.bold17)
             })

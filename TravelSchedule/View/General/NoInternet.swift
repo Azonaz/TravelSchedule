@@ -4,7 +4,7 @@ struct NoInternet: View {
     var body: some View {
         VStack {
             Image(.noInternet)
-            Text("Нет интернета")
+            Text(Constants.noInternet)
                 .font(.bold24)
         }
     }

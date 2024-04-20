@@ -11,7 +11,7 @@ struct CarrierView: View {
                 .font(.bold24)
                 .foregroundColor(.blackDay)
             VStack(alignment: .leading) {
-                Text("E-mail")
+                Text(Constants.email)
                     .font(.regular17)
                     .foregroundColor(.blackDay)
                 Text(viewModel.carriers.first?.email ?? "")
@@ -19,7 +19,7 @@ struct CarrierView: View {
                     .foregroundColor(.blueUniversal)
             }
             VStack(alignment: .leading) {
-                Text("Телефон")
+                Text(Constants.phone)
                     .font(.regular17)
                     .foregroundColor(.blackDay)
                 Text(viewModel.carriers.first?.phone ?? "")
@@ -32,7 +32,7 @@ struct CarrierView: View {
         .padding(.top, 16)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton())
-        .navigationTitle("Информация о перевозчике")
+        .navigationTitle(Constants.carrierInfo)
     }
 }
 

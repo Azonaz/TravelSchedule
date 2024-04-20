@@ -4,7 +4,7 @@ struct ServerErrorView: View {
     var body: some View {
         VStack {
             Image(.serverError)
-            Text("Ошибка сервера")
+            Text(Constants.serverError)
                 .font(.bold24)
         }
     }

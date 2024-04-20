@@ -42,14 +42,14 @@ final class ScheduleViewModel: ObservableObject {
 
     func fromText() -> String {
         guard let city = selectedFromCity, let station = selectedFromStation else {
-            return "Откуда"
+            return Constants.fromCity
         }
         return "\(city.name) (\(station))"
     }
 
     func toText() -> String {
         guard let city = selectedToCity, let station = selectedToStation else {
-            return "Куда"
+            return Constants.toCity
         }
         return "\(city.name) (\(station))"
     }
