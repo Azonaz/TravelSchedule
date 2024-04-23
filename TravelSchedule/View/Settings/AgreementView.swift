@@ -25,12 +25,10 @@ struct AgreementView: View {
                         WebView(url: url)
                             .foregroundColor(.primary)
                             .edgesIgnoringSafeArea(.all)
-                    } else {
-                        NoInternet()
                     }
                 } else {
                     Spacer()
-                    NoInternet()
+                    ErrorView(errorType: .noInternet)
                     Spacer()
                 }
             }

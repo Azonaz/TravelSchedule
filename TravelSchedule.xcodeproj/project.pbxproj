@@ -18,8 +18,7 @@
 		84234D172BCD211E0088C20F /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234D162BCD211E0088C20F /* TabBarView.swift */; };
 		84234D1B2BCD22050088C20F /* AgreementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234D1A2BCD22050088C20F /* AgreementView.swift */; };
 		84234D1E2BCD2A100088C20F /* BackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234D1D2BCD2A100088C20F /* BackButton.swift */; };
-		84234D222BCD2CF90088C20F /* ServerErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234D212BCD2CF90088C20F /* ServerErrorView.swift */; };
-		84234D252BCD2F440088C20F /* NoInternet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234D242BCD2F440088C20F /* NoInternet.swift */; };
+		84234D222BCD2CF90088C20F /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234D212BCD2CF90088C20F /* ErrorView.swift */; };
 		84234D2E2BCD485D0088C20F /* StoryPreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234D2D2BCD485D0088C20F /* StoryPreView.swift */; };
 		84234D362BCD66BB0088C20F /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234D352BCD66BB0088C20F /* City.swift */; };
 		84234D462BCD71FC0088C20F /* SelectCityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84234D452BCD71FC0088C20F /* SelectCityView.swift */; };
@@ -61,8 +60,7 @@
 		84234D162BCD211E0088C20F /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		84234D1A2BCD22050088C20F /* AgreementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementView.swift; sourceTree = "<group>"; };
 		84234D1D2BCD2A100088C20F /* BackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButton.swift; sourceTree = "<group>"; };
-		84234D212BCD2CF90088C20F /* ServerErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerErrorView.swift; sourceTree = "<group>"; };
-		84234D242BCD2F440088C20F /* NoInternet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternet.swift; sourceTree = "<group>"; };
+		84234D212BCD2CF90088C20F /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		84234D2D2BCD485D0088C20F /* StoryPreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryPreView.swift; sourceTree = "<group>"; };
 		84234D352BCD66BB0088C20F /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		84234D452BCD71FC0088C20F /* SelectCityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityView.swift; sourceTree = "<group>"; };
@@ -190,8 +188,7 @@
 			children = (
 				84234D1D2BCD2A100088C20F /* BackButton.swift */,
 				841546FC2BCE58C500FB7CEA /* SearchBarView.swift */,
-				84234D212BCD2CF90088C20F /* ServerErrorView.swift */,
-				84234D242BCD2F440088C20F /* NoInternet.swift */,
+				84234D212BCD2CF90088C20F /* ErrorView.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -356,7 +353,7 @@
 				84DB71D92BA08B240064A3D2 /* SearchRoutesService.swift in Sources */,
 				84DB71E52BA08F540064A3D2 /* CopyrightService.swift in Sources */,
 				84BF22462BCFC992005C0349 /* RoutesListCellView.swift in Sources */,
-				84234D222BCD2CF90088C20F /* ServerErrorView.swift in Sources */,
+				84234D222BCD2CF90088C20F /* ErrorView.swift in Sources */,
 				84234D492BCD72140088C20F /* SelectStationView.swift in Sources */,
 				841546FD2BCE58C500FB7CEA /* SearchBarView.swift in Sources */,
 				84BF22562BD016C0005C0349 /* CarrierView.swift in Sources */,
@@ -370,7 +367,6 @@
 				844ED3312BCE784D0047F2FE /* SettingsViewModel.swift in Sources */,
 				84DB71DD2BA08D020064A3D2 /* ThreadServise.swift in Sources */,
 				840082652B9B575D00FE140D /* ContentView.swift in Sources */,
-				84234D252BCD2F440088C20F /* NoInternet.swift in Sources */,
 				84234D1E2BCD2A100088C20F /* BackButton.swift in Sources */,
 				84BF224B2BCFCAAE005C0349 /* Route.swift in Sources */,
 				84234D2E2BCD485D0088C20F /* StoryPreView.swift in Sources */,
