@@ -9,10 +9,10 @@ struct SelectStationView: View {
     @State private var searchText = ""
 
     var body: some View {
-        ZStack {
+        VStack {
             SearchBarView(searchText: $searchText)
             filteredStationsList
-                .padding(.top, 70)
+                .padding(.top, 16)
         }
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: backButton)

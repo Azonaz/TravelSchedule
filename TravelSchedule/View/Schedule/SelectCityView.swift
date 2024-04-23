@@ -6,10 +6,10 @@ struct SelectCityView: View {
     @State private var searchText = ""
 
     var body: some View {
-        ZStack {
+        VStack {
             SearchBarView(searchText: $searchText)
             filteredCitiesList
-                .padding(.top, 70)
+                .padding(.top, 16)
         }
         .navigationBarTitle(Constants.selectCity, displayMode: .inline)
         .navigationBarBackButtonHidden(true)
