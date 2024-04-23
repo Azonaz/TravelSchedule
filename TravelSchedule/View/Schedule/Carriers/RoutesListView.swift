@@ -11,21 +11,30 @@ struct RoutesListView: View {
                 .foregroundColor(.blackDay)
                 .padding(.bottom, 24)
                 .padding(.horizontal, 16)
-            ScrollView {
-                LazyVStack {
-                    ForEach(viewModel.routes) { route in
-                        NavigationLink(destination: CarrierView()) {
-                            RoutesListCellView(route: route)
+            ZStack {
+                if viewModel.routes.isEmpty {
+                    Text(Constants.noRoutes)
+                        .foregroundColor(.blackDay)
+                        .font(.bold24)
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(viewModel.routes) { route in
+                                NavigationLink(destination: CarrierView()) {
+                                    RoutesListCellView(route: route)
+                                }
+                                .listRowSeparator(.hidden)
+                                .buttonStyle(PlainButtonStyle())
+                                .contentShape(Rectangle())
+                            }
                         }
-                        .listRowSeparator(.hidden)
-                        .buttonStyle(PlainButtonStyle())
-                        .contentShape(Rectangle())
+                        .padding(.horizontal, 16)
                     }
+                    .listStyle(.inset)
+                    .scrollContentBackground(.hidden)
                 }
-                .padding(.horizontal, 16)
             }
-            .listStyle(.inset)
-            .scrollContentBackground(.hidden)
             sortButton
                 .padding(.horizontal, 16)
         }

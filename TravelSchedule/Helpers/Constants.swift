@@ -19,6 +19,7 @@ enum Constants {
     static let enterRequest = "Введите запрос"
     static let fromCity = "Откуда"
     static let toCity = "Куда"
+    static let noRoutes = "Вариантов нет"
 
     // Settings
     static let darkTheme = "Темная тема"
