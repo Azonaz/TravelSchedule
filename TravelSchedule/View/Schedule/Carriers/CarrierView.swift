@@ -2,6 +2,7 @@ import SwiftUI
 
 struct CarrierView: View {
     @EnvironmentObject var viewModel: ScheduleViewModel
+    @State private var isShowingMailComposer = false
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -14,20 +15,34 @@ struct CarrierView: View {
                 Text(Constants.email)
                     .font(.regular17)
                     .foregroundColor(.blackDay)
-                Text(viewModel.carriers.first?.email ?? "")
-                    .font(.regular12)
-                    .foregroundColor(.blueUniversal)
+                Button {
+                    if let email = viewModel.carriers.first?.email,
+                       let url = URL(string: "mailto:\(email)") {
+                        UIApplication.shared.open(url)
+                    }
+                } label: {
+                    Text(viewModel.carriers.first?.email ?? "")
+                        .font(.regular12)
+                        .foregroundColor(.blueUniversal)
+                }
             }
             VStack(alignment: .leading) {
                 Text(Constants.phone)
                     .font(.regular17)
                     .foregroundColor(.blackDay)
-                Text(viewModel.carriers.first?.phone ?? "")
-                    .font(.regular12)
-                    .foregroundColor(.blueUniversal)
+                if let phone = viewModel.carriers.first?.phone {
+                    Button {
+                        if let phoneURL = URL(string: "tel://\(phone)") {
+                            UIApplication.shared.open(phoneURL)
+                        }
+                    } label: {
+                        Text(phone)
+                            .font(.regular12)
+                            .foregroundColor(.blueUniversal)
+                    }
+                }
             }
             Spacer()
-
         }
         .padding(.top, 16)
         .navigationBarBackButtonHidden(true)
