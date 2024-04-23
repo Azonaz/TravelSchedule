@@ -26,14 +26,26 @@ struct SelectCityView: View {
             .font(.bold24)
             .padding()) :
         AnyView(
-            List(filteredCities, id: \.name) { city in
-                NavigationLink(destination: SelectStationView(city: city, selectionType: selectionType)) {
-                    Text(city.name)
+            ScrollView {
+                VStack(spacing: 0) {
+                    ForEach(filteredCities, id: \.name) { city in
+                        NavigationLink(destination: SelectStationView(city: city, selectionType: selectionType)) {
+                            HStack {
+                                Text(city.name)
+                                    .font(.regular17)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .imageScale(.large)
+                            }
+                            .contentShape(Rectangle())
+                            .frame(height: 60)
+                            .padding(.horizontal, 16)
+                        }
+                        .foregroundColor(.blackDay)
+                        .buttonStyle(PlainButtonStyle())
+                    }
                 }
-                .listRowSeparator(.hidden)
             }
-                .listStyle(.inset)
-                .scrollContentBackground(.hidden)
         )
     }
 }

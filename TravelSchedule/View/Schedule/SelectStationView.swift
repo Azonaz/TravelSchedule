@@ -40,17 +40,29 @@ struct SelectStationView: View {
                 .padding()
         ) :
         AnyView(
-            List(filteredStations, id: \.self) { station in
-                NavigationLink(destination: TabBarView(), isActive: $isNavigationActive) {
-                    Text(station)
-                }
-                .listRowSeparator(.hidden)
-                .onTapGesture {
-                    handleStationSelection(station: station)
+            ScrollView {
+                VStack(spacing: 0) {
+                    ForEach(filteredStations, id: \.self) { station in
+                        NavigationLink(destination: TabBarView(), isActive: $isNavigationActive) {
+                            HStack {
+                                Text(station)
+                                    .font(.regular17)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .imageScale(.large)
+                            }
+                            .contentShape(Rectangle())
+                            .frame(height: 60)
+                            .padding(.horizontal, 16)
+                            .onTapGesture {
+                                handleStationSelection(station: station)
+                            }
+                        }
+                        .foregroundColor(.blackDay)
+                        .buttonStyle(PlainButtonStyle())
+                    }
                 }
             }
-                .listStyle(.inset)
-                .scrollContentBackground(.hidden)
         )
     }
 
