@@ -40,4 +40,5 @@ struct SelectCityView: View {
 
 #Preview {
     SelectCityView(selectionType: .departure)
+        .environmentObject(ScheduleViewModel())
 }

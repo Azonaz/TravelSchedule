@@ -38,4 +38,5 @@ struct CarrierView: View {
 
 #Preview {
     CarrierView()
+        .environmentObject(ScheduleViewModel())
 }

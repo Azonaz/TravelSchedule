@@ -52,4 +52,5 @@ struct RoutesListView: View {
 
 #Preview {
     RoutesListView()
+        .environmentObject(ScheduleViewModel())
 }

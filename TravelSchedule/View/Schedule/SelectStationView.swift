@@ -70,4 +70,5 @@ struct SelectStationView: View {
 #Preview {
     SelectStationView(city: City(name: "Москва", stations: ["Ленинградский вокзал", "Киевский вокзал"]),
                       selectionType: .departure)
+    .environmentObject(ScheduleViewModel())
 }
