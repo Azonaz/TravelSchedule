@@ -11,33 +11,33 @@ struct SortRoutesView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Text(Constants.departureTime)
-                .font(.bold24)
-                .foregroundColor(.blackDay)
-                .padding(.top, 24)
-                .padding(.horizontal, 24)
-
-            List {
+            VStack(alignment: .leading, spacing: 0) {
+                Text(Constants.departureTime)
+                    .font(.bold24)
+                    .foregroundColor(.blackDay)
+                    .padding(.vertical, 16)
                 ForEach(options, id: \.self) { option in
-                    HStack {
+                    HStack(spacing: 0) {
                         Text(option)
                             .font(.regular17)
                         Spacer()
                         if selectedOptions.contains(option) {
                             Image(systemName: "checkmark.square.fill")
+                                .imageScale(.large)
                                 .foregroundColor(.blackDay)
                                 .onTapGesture {
                                     selectedOptions.remove(option)
                                 }
                         } else {
                             Image(systemName: "square")
+                                .imageScale(.large)
                                 .foregroundColor(.blackDay)
                                 .onTapGesture {
                                     selectedOptions.insert(option)
                                 }
                         }
                     }
-                    .contentShape(Rectangle())
+                    .frame(height: 60)
                     .onTapGesture {
                         if selectedOptions.contains(option) {
                             selectedOptions.remove(option)
@@ -46,20 +46,15 @@ struct SortRoutesView: View {
                         }
                     }
                 }
-                .padding(.bottom, 24)
-                .listRowSeparator(.hidden)
             }
-            .listStyle(.inset)
 
-            Text(Constants.showTransfer)
-                .font(.bold24)
-                .foregroundColor(.blackDay)
-                .padding(.horizontal, 24)
-                .padding(.top, 24)
-
-            List {
+            VStack(alignment: .leading, spacing: 0) {
+                Text(Constants.showTransfer)
+                    .font(.bold24)
+                    .foregroundColor(.blackDay)
+                    .padding(.vertical, 16)
                 ForEach(options2, id: \.self) { option in
-                    HStack {
+                    HStack(spacing: 0) {
                         Text(option)
                             .font(.regular17)
                         Spacer()
@@ -80,7 +75,7 @@ struct SortRoutesView: View {
                                 }
                         }
                     }
-                    .contentShape(Rectangle())
+                    .frame(height: 60)
                     .onTapGesture {
                         if selectedOption2 == option {
                             selectedOption2 = nil
@@ -89,17 +84,16 @@ struct SortRoutesView: View {
                         }
                     }
                 }
-                .padding(.bottom, 24)
-                .listRowSeparator(.hidden)
             }
-            .listStyle(.inset)
+
+            Spacer()
+
+            findButton
+                .padding(.bottom, 20)
+                .navigationBarBackButtonHidden(true)
+                .navigationBarItems(leading: BackButton())
         }
-        Spacer()
-        findButton
-            .padding(.horizontal, 16)
-            .padding(.bottom, 24)
-            .navigationBarBackButtonHidden(true)
-            .navigationBarItems(leading: BackButton())
+        .padding(.horizontal, 16)
     }
 
     private var findButton: some View {

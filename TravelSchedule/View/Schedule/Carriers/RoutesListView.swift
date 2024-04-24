@@ -9,8 +9,7 @@ struct RoutesListView: View {
             Text("\(viewModel.fromText()) → \(viewModel.toText())")
                 .font(.bold24)
                 .foregroundColor(.blackDay)
-                .padding(.bottom, 24)
-                .padding(.horizontal, 16)
+                .padding(.top, 16)
             ZStack {
                 if viewModel.routes.isEmpty {
                     Text(Constants.noRoutes)
@@ -18,28 +17,32 @@ struct RoutesListView: View {
                         .font(.bold24)
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
-                    ScrollView {
-                        LazyVStack {
-                            ForEach(viewModel.routes) { route in
-                                NavigationLink(destination: CarrierView()) {
-                                    RoutesListCellView(route: route)
-                                }
-                                .listRowSeparator(.hidden)
-                                .buttonStyle(PlainButtonStyle())
-                                .contentShape(Rectangle())
-                            }
-                        }
-                        .padding(.horizontal, 16)
-                    }
-                    .listStyle(.inset)
-                    .scrollContentBackground(.hidden)
+                    routesView
                 }
             }
             sortButton
-                .padding(.horizontal, 16)
+                .padding(.bottom, 20)
         }
+        .padding(.horizontal, 16)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(leading: BackButton())
+    }
+
+    private var routesView: some View {
+        ScrollView {
+            LazyVStack(spacing: 8) {
+                ForEach(viewModel.routes) { route in
+                    NavigationLink(destination: CarrierView()) {
+                        RoutesListCellView(route: route)
+                    }
+                    .listRowSeparator(.hidden)
+                    .buttonStyle(PlainButtonStyle())
+                    .contentShape(Rectangle())
+                }
+            }
+        }
+        .listStyle(.inset)
+        .scrollContentBackground(.hidden)
     }
 
     private var sortButton: some View {
