@@ -1,28 +1,70 @@
-import SwiftUI
+import Foundation
 import OpenAPIURLSession
 
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-        .onAppear {
-            search()
-            schedule()
-            thread()
-            stations()
-            settlement()
-            carrier()
-            stationsList()
-            copiright()
-        }
+enum SelectionType {
+    case departure
+    case arrival
+}
+
+final class ScheduleViewModel: ObservableObject {
+    @Published var cities: [City]
+    @Published var routes: [Route]
+    @Published var carriers: [Carrier]
+    @Published var selectedFromCity: City?
+    @Published var selectedFromStation: String?
+    @Published var selectedToCity: City?
+    @Published var selectedToStation: String?
+    @Published var selectionType: SelectionType?
+
+    init() {
+        self.cities = [
+            City(name: "Великий Новгород", stations: ["Великий Новгород", "Новгород-Лужский"]),
+            City(name: "Москва", stations: ["Ленинградский вокзал", "Киевский вокзал", "Казанский вокзал",
+                                            "Курский вокзал", "Ярославский вокзал", "Белорусский вокзал"]),
+            City(name: "Новосибирск", stations: ["Новосибирск-восточный", "Новосибирск-главный",
+                                                 "Новосибирск-западный"]),
+            City(name: "Санкт-Петербург", stations: ["Московский вокзал", "Ладожский вокзал", "Витебский вокзал",
+                                                     "Балтийский вокзал", "Финляндский вокзал"])
+        ]
+        self.routes = [
+            Route(carrierLogo: "rzdLogo", carrierName: "РЖД", transferCity: "С пересадкой в Костроме",
+                    dateString: "14 января", startTime: "22:30", finishTime: "08:15", travelDuration: "20 часов"),
+            Route(carrierLogo: "rzdLogo", carrierName: "РЖД", transferCity: "", dateString: "15 января",
+                    startTime: "00:30", finishTime: "09:15", travelDuration: "18 часов"),
+            Route(carrierLogo: "rzdLogo", carrierName: "РЖД", transferCity: "", dateString: "17 января",
+                    startTime: "22:30", finishTime: "07:15", travelDuration: "19 часов")
+        ]
+        self.carriers = [
+            Carrier(carrierLogo: "rzdLogoBig", carrierName: "ОАО «РЖД»",
+                    email: "i.lozgkina@yandex.ru", phone: "+7 (904) 329-27-71")
+        ]
     }
-    
-    //Расписание рейсов между станциями
+
+    func fromText() -> String {
+        guard let city = selectedFromCity, let station = selectedFromStation else {
+            return Constants.fromCity
+        }
+        return "\(city.name) (\(station))"
+    }
+
+    func toText() -> String {
+        guard let city = selectedToCity, let station = selectedToStation else {
+            return Constants.toCity
+        }
+        return "\(city.name) (\(station))"
+    }
+
+    func swapStations() {
+        let tempCity = selectedFromCity
+        let tempStation = selectedFromStation
+        selectedFromCity = selectedToCity
+        selectedFromStation = selectedToStation
+        selectedToCity = tempCity
+        selectedToStation = tempStation
+    }
+
+    // swiftlint:disable force_try
+    // Расписание рейсов между станциями
     func search() {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
@@ -30,8 +72,8 @@ struct ContentView: View {
                                           apikey: Constants.apiKey)
         Task {
             do {
-                let routes = try await service.searchRoutes(from: "c146",
-                                                            to: "c213",
+                let routes = try await service.searchRoutes(fromCity: "c146",
+                                                            toCity: "c213",
                                                             date: "2024-03-12")
                 print(routes)
             } catch {
@@ -39,8 +81,8 @@ struct ContentView: View {
             }
         }
     }
-    
-    //Расписание рейсов по станции
+
+    // Расписание рейсов по станции
     func schedule() {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
@@ -56,8 +98,8 @@ struct ContentView: View {
             }
         }
     }
-    
-    //Список станций следования
+
+    // Список станций следования
     func thread() {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
@@ -72,8 +114,8 @@ struct ContentView: View {
             }
         }
     }
-    
-    //Список ближайших станций
+
+    // Список ближайших станций
     func stations() {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
@@ -90,8 +132,8 @@ struct ContentView: View {
             }
         }
     }
-    
-    //Ближайший город
+
+    // Ближайший город
     func settlement() {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
@@ -107,8 +149,8 @@ struct ContentView: View {
             }
         }
     }
-    
-    //Информация о перевозчике
+
+    // Информация о перевозчике
     func carrier() {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
@@ -123,8 +165,8 @@ struct ContentView: View {
             }
         }
     }
-    
-    //Список всех доступных станций
+
+    // Список всех доступных станций
     func stationsList() {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
@@ -132,7 +174,7 @@ struct ContentView: View {
                                           apikey: Constants.apiKey)
         Task {
             do {
-                let stations = try await service.getStationsList()
+                let stations = try await service.getStationList()
                 let decodeStations = try await Data(collecting: stations, upTo: 50*1024*1024)
                 let starionsList = try JSONDecoder().decode(StationsList.self, from: decodeStations)
                 print(starionsList)
@@ -141,9 +183,9 @@ struct ContentView: View {
             }
         }
     }
-    
-    //Копирайт Яндекс Расписаний
-    func copiright() {
+
+    // Копирайт Яндекс Расписаний
+    func copyright() {
         let client = Client(serverURL: try! Servers.server1(),
                             transport: URLSessionTransport())
         let service = CopyrightService(client: client,
@@ -157,8 +199,6 @@ struct ContentView: View {
             }
         }
     }
-}
+    // swiftlint:enable force_try
 
-#Preview {
-    ContentView()
 }
