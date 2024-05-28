@@ -1,14 +1,16 @@
 import SwiftUI
 
 struct StoryPreView: View {
+    let stories: [Story]
+
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 0) {
-                ForEach(0..<4) { index in
+                ForEach(stories) { story in
                     ZStack(alignment: .bottomLeading) {
-                        Image("story\(index + 1)")
+                        story.image
                             .resizable()
-                            .scaledToFit()
+                            .scaledToFill()
                             .frame(width: 92, height: 140)
                             .cornerRadius(16)
                             .overlay(
@@ -16,7 +18,7 @@ struct StoryPreView: View {
                                     .stroke(Color.blueUniversal, lineWidth: 4)
                             )
 
-                        Text("Text Text Text Text Text Text Text \(index + 1)")
+                        Text(story.title)
                             .font(.regular12)
                             .foregroundColor(.white)
                             .lineLimit(3)
@@ -32,5 +34,5 @@ struct StoryPreView: View {
 }
 
 #Preview {
-    StoryPreView()
+    StoryPreView(stories: Story.stories)
 }
