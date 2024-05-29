@@ -176,6 +176,7 @@
 				84234D352BCD66BB0088C20F /* City.swift */,
 				84BF224A2BCFCAAE005C0349 /* Route.swift */,
 				84BF22522BD01548005C0349 /* Carrier.swift */,
+				848A86722C05E84500192073 /* Story.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -242,7 +243,6 @@
 			isa = PBXGroup;
 			children = (
 				848A866D2C05E7B700192073 /* Timer */,
-				848A86722C05E84500192073 /* Story.swift */,
 				84234D2D2BCD485D0088C20F /* StoryPreView.swift */,
 				848A86742C05E9DE00192073 /* StoryView.swift */,
 				848A86772C05F15D00192073 /* StoriesTabView.swift */,

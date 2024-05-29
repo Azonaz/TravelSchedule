@@ -5,7 +5,7 @@ struct StoryPreView: View {
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 0) {
+            HStack(spacing: 12) {
                 ForEach(viewModel.stories.indices, id: \.self) { index in
                     NavigationLink(destination: StoriesView(viewModel: viewModel)) {
                         ZStack(alignment: .bottomLeading) {
@@ -24,8 +24,9 @@ struct StoryPreView: View {
                             Text(viewModel.stories[index].title)
                                 .font(.regular12)
                                 .foregroundColor(.white)
+                                .multilineTextAlignment(.leading)
                                 .lineLimit(3)
-                                .frame(width: 92, alignment: .leading)
+                                .frame(width: 76)
                                 .padding(8)
                         }
                     }

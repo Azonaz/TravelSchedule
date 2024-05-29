@@ -9,6 +9,6 @@ final class StoryViewModel: ObservableObject {
     }
 
     func selectStory(at index: Int) {
-            selectedStoryIndex = index
-        }
+        selectedStoryIndex = index
+    }
 }
