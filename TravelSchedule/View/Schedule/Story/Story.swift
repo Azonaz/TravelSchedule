@@ -5,6 +5,7 @@ struct Story {
     let image: Image
     let title: String
     let description: String
+    var isViewed: Bool = false
 
     static let stories: [Story] = (0..<6).map { index in
         Story(

@@ -45,6 +45,7 @@
 		84BF22502BD011EB005C0349 /* SortRoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF224F2BD011EB005C0349 /* SortRoutesView.swift */; };
 		84BF22532BD01548005C0349 /* Carrier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF22522BD01548005C0349 /* Carrier.swift */; };
 		84BF22562BD016C0005C0349 /* CarrierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BF22552BD016C0005C0349 /* CarrierView.swift */; };
+		84C05ED62C07193600D560C0 /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C05ED52C07193600D560C0 /* StoryViewModel.swift */; };
 		84DB71D92BA08B240064A3D2 /* SearchRoutesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB71D82BA08B240064A3D2 /* SearchRoutesService.swift */; };
 		84DB71DB2BA08C380064A3D2 /* ScheduleServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB71DA2BA08C380064A3D2 /* ScheduleServise.swift */; };
 		84DB71DD2BA08D020064A3D2 /* ThreadServise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB71DC2BA08D020064A3D2 /* ThreadServise.swift */; };
@@ -93,6 +94,7 @@
 		84BF224F2BD011EB005C0349 /* SortRoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortRoutesView.swift; sourceTree = "<group>"; };
 		84BF22522BD01548005C0349 /* Carrier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carrier.swift; sourceTree = "<group>"; };
 		84BF22552BD016C0005C0349 /* CarrierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrierView.swift; sourceTree = "<group>"; };
+		84C05ED52C07193600D560C0 /* StoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModel.swift; sourceTree = "<group>"; };
 		84DB71D82BA08B240064A3D2 /* SearchRoutesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRoutesService.swift; sourceTree = "<group>"; };
 		84DB71DA2BA08C380064A3D2 /* ScheduleServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleServise.swift; sourceTree = "<group>"; };
 		84DB71DC2BA08D020064A3D2 /* ThreadServise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThreadServise.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				84234D4C2BCD728F0088C20F /* SheduleViewModel.swift */,
+				84C05ED52C07193600D560C0 /* StoryViewModel.swift */,
 				844ED3302BCE784D0047F2FE /* SettingsViewModel.swift */,
 			);
 			path = ViewModel;
@@ -426,6 +429,7 @@
 				842BAE7D2B9F3B5400108881 /* Constants.swift in Sources */,
 				84234D462BCD71FC0088C20F /* SelectCityView.swift in Sources */,
 				848A86662C05BECD00192073 /* CloseButton.swift in Sources */,
+				84C05ED62C07193600D560C0 /* StoryViewModel.swift in Sources */,
 				84234D4D2BCD728F0088C20F /* SheduleViewModel.swift in Sources */,
 				84BF22442BCFC473005C0349 /* RoutesListView.swift in Sources */,
 			);

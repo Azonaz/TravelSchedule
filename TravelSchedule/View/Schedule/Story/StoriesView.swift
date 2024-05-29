@@ -1,34 +1,61 @@
 import SwiftUI
 
 struct StoriesView: View {
-    let stories: [Story]
-    private var timerConfiguration: TimerConfiguration { .init(storiesCount: stories.count) }
+    @ObservedObject var viewModel: StoryViewModel
+    @Environment(\.presentationMode) var presentationMode
+    private var timerConfiguration: TimerConfiguration { .init(storiesCount: viewModel.stories.count) }
+    private let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
     @State private var previousCurrentStoryIndex: Int?
     @State private var previousCurrentProgress: CGFloat?
-    @State private var currentStoryIndex: Int = 0
     @State private var currentProgress: CGFloat = 0
+    @State private var currentStoryIndex: Int = 0
 
     var body: some View {
         ZStack(alignment: .topTrailing) {
+            Color.black.edgesIgnoringSafeArea(.all)
             storiesView
             CloseButton()
                 .padding(.top, 57)
                 .padding(.trailing, 12)
         }
+        .navigationBarBackButtonHidden()
+        .onAppear {
+            currentStoryIndex = viewModel.selectedStoryIndex
+            markCurrentStoryAsViewed()
+        }
+        .onChange(of: currentStoryIndex) { newIndex in
+            didChangeCurrentIndex(newIndex: newIndex)
+            markCurrentStoryAsViewed()
+        }
+        .gesture(
+            DragGesture()
+                .onEnded { gesture in
+                    if gesture.translation.height > 100 {
+                        withAnimation {
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                }
+        )
+        .onReceive(timer) { _ in
+            if currentStoryIndex == viewModel.stories.count - 1 {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
     }
 
     private var storiesView: some View {
         ZStack(alignment: .topTrailing) {
-            StoriesTabView(stories: stories, currentStoryIndex: $currentStoryIndex)
+            StoriesTabView(stories: viewModel.stories, currentStoryIndex: $currentStoryIndex)
                 .onAppear {
-                    previousCurrentStoryIndex = currentStoryIndex
+                    previousCurrentStoryIndex = currentStoryIndex == 0 ? currentStoryIndex : currentStoryIndex - 1
                 }
                 .onChange(of: currentStoryIndex) { newIndex in
                     didChangeCurrentIndex(newIndex: newIndex)
                 }
 
             StoriesProgressBar(
-                storiesCount: stories.count,
+                storiesCount: viewModel.stories.count,
                 timerConfiguration: timerConfiguration,
                 currentProgress: $currentProgress
             )
@@ -68,8 +95,12 @@ struct StoriesView: View {
         }
         previousCurrentProgress = newProgress
     }
+
+    private func markCurrentStoryAsViewed() {
+        viewModel.stories[currentStoryIndex].isViewed = true
+    }
 }
 
 #Preview {
-    StoriesView(stories: Story.stories)
+    StoriesView(viewModel: StoryViewModel())
 }

@@ -10,7 +10,7 @@ struct ContentView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                StoryPreView(stories: Story.stories)
+                StoryPreView()
                 ZStack {
                     blueRectangle
                     HStack {

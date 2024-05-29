@@ -57,7 +57,7 @@ private struct MaskFragmentView: View {
     Color.gray
         .ignoresSafeArea()
         .overlay(
-            ProgressBarView(numberOfSections: 5, progress: 0.5)
+            ProgressBarView(numberOfSections: 6, progress: 0.5)
                 .padding()
         )
 }
