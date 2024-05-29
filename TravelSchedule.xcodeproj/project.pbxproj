@@ -163,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				84234D162BCD211E0088C20F /* TabBarView.swift */,
+				848A86602C05B94D00192073 /* Story */,
 				84234D382BCD716D0088C20F /* Schedule */,
 				84234D3D2BCD71890088C20F /* Settings */,
 				84234D412BCD71BB0088C20F /* General */,
@@ -187,7 +188,6 @@
 				840082642B9B575D00FE140D /* ContentView.swift */,
 				84234D452BCD71FC0088C20F /* SelectCityView.swift */,
 				84234D482BCD72140088C20F /* SelectStationView.swift */,
-				848A86602C05B94D00192073 /* Story */,
 				84BF22482BCFC9B0005C0349 /* Carriers */,
 			);
 			path = Schedule;
