@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct CarrierView: View {
-    @EnvironmentObject var viewModel: ScheduleViewModel
+    @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     @State private var isShowingMailComposer = false
 
     var body: some View {
@@ -9,7 +9,7 @@ struct CarrierView: View {
             ZStack {
                 Rectangle()
                     .foregroundColor(.white)
-                Image(viewModel.carriers.first?.carrierLogo ?? "")
+                Image(scheduleViewModel.carriers.first?.carrierLogo ?? "")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(maxHeight: .infinity)
@@ -17,7 +17,7 @@ struct CarrierView: View {
             .frame(height: 104)
             .cornerRadius(24)
             .padding(.vertical, 16)
-            Text(viewModel.carriers.first?.carrierName ?? "")
+            Text(scheduleViewModel.carriers.first?.carrierName ?? "")
                 .font(.bold24)
                 .foregroundColor(.blackDay)
             VStack(alignment: .leading) {
@@ -25,12 +25,12 @@ struct CarrierView: View {
                     .font(.regular17)
                     .foregroundColor(.blackDay)
                 Button {
-                    if let email = viewModel.carriers.first?.email,
+                    if let email = scheduleViewModel.carriers.first?.email,
                        let url = URL(string: "mailto:\(email)") {
                         UIApplication.shared.open(url)
                     }
                 } label: {
-                    Text(viewModel.carriers.first?.email ?? "")
+                    Text(scheduleViewModel.carriers.first?.email ?? "")
                         .font(.regular12)
                         .foregroundColor(.blueUniversal)
                 }
@@ -40,7 +40,7 @@ struct CarrierView: View {
                 Text(Constants.phone)
                     .font(.regular17)
                     .foregroundColor(.blackDay)
-                if let phone = viewModel.carriers.first?.phone {
+                if let phone = scheduleViewModel.carriers.first?.phone {
                     Button {
                         if let phoneURL = URL(string: "tel://\(phone)") {
                             UIApplication.shared.open(phoneURL)

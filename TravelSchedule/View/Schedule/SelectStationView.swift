@@ -3,7 +3,7 @@ import SwiftUI
 struct SelectStationView: View {
     let city: City
     let selectionType: SelectionType
-    @EnvironmentObject var viewModel: ScheduleViewModel
+    @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var isNavigationActive = false
     @State private var searchText = ""
@@ -73,11 +73,11 @@ struct SelectStationView: View {
     private func handleStationSelection(station: String) {
         switch selectionType {
         case .departure:
-            viewModel.selectedFromCity = city
-            viewModel.selectedFromStation = station
+            scheduleViewModel.selectedFromCity = city
+            scheduleViewModel.selectedFromStation = station
         case .arrival:
-            viewModel.selectedToCity = city
-            viewModel.selectedToStation = station
+            scheduleViewModel.selectedToCity = city
+            scheduleViewModel.selectedToStation = station
         }
         isNavigationActive = true
     }

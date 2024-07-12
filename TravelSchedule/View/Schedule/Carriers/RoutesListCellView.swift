@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct RoutesListCellView: View {
-    @EnvironmentObject var viewModel: ScheduleViewModel
+    @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     var route: Route
 
     var body: some View {

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct SelectCityView: View {
     let selectionType: SelectionType
-    @EnvironmentObject var viewModel: ScheduleViewModel
+    @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     @State private var searchText = ""
 
     var body: some View {
@@ -17,7 +17,7 @@ struct SelectCityView: View {
     }
 
     private var filteredCitiesList: some View {
-        let filteredCities = viewModel.cities.filter { city in
+        let filteredCities = scheduleViewModel.cities.filter { city in
             searchText.isEmpty || city.name.localizedCaseInsensitiveContains(searchText)
         }
         return AnyView(

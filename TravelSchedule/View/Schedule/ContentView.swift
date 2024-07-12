@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: ScheduleViewModel
+    @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     @State private var fromSelectionType: SelectionType?
     @State private var toSelectionType: SelectionType?
     @State private var rotationDegrees = 0.0
@@ -58,7 +58,7 @@ struct ContentView: View {
             .onTapGesture {
                 withAnimation(.spring(response: 0.3, dampingFraction: 0.5, blendDuration: 0)) {
                     rotationDegrees += 180
-                    viewModel.swapStations()
+                    scheduleViewModel.swapStations()
                 }
             }
     }
@@ -66,8 +66,8 @@ struct ContentView: View {
     private var fromButton: some View {
         NavigationLink(destination: SelectCityView(selectionType: .departure).navigationBarTitle(Constants.selectCity),
                        tag: SelectionType.departure, selection: $fromSelectionType) {
-            Text(viewModel.fromText())
-                .foregroundColor(viewModel.selectedFromStation == nil
+            Text(scheduleViewModel.fromText())
+                .foregroundColor(scheduleViewModel.selectedFromStation == nil
                                  ? .grayUniversal : .black)
                 .font(.regular17)
                 .lineLimit(1)
@@ -79,8 +79,8 @@ struct ContentView: View {
     private var toButton: some View {
         NavigationLink(destination: SelectCityView(selectionType: .arrival).navigationBarTitle(Constants.selectCity),
                        tag: SelectionType.arrival, selection: $toSelectionType) {
-            Text(viewModel.toText())
-                .foregroundColor(viewModel.selectedToStation == nil
+            Text(scheduleViewModel.toText())
+                .foregroundColor(scheduleViewModel.selectedToStation == nil
                                  ? .grayUniversal : .black)
                 .font(.regular17)
                 .lineLimit(1)
@@ -102,8 +102,8 @@ struct ContentView: View {
             .background(.blueUniversal)
             .cornerRadius(16)
             .padding(.vertical, 8)
-            .opacity(viewModel.selectedFromCity != nil && viewModel.selectedToCity != nil ? 1 : 0)
-            .disabled(!(viewModel.selectedFromCity != nil && viewModel.selectedToCity != nil))
+            .opacity(scheduleViewModel.selectedFromCity != nil && scheduleViewModel.selectedToCity != nil ? 1 : 0)
+            .disabled(!(scheduleViewModel.selectedFromCity != nil && scheduleViewModel.selectedToCity != nil))
         }
     }
 }

@@ -2,12 +2,12 @@ import SwiftUI
 
 @main
 struct TravelScheduleApp: App {
-    @StateObject var viewModel = ScheduleViewModel()
+    @StateObject var scheduleViewModel = ScheduleViewModel()
 
     var body: some Scene {
         WindowGroup {
             TabBarView()
-                .environmentObject(viewModel)
+                .environmentObject(scheduleViewModel)
         }
     }
 }

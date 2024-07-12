@@ -1,17 +1,17 @@
 import SwiftUI
 
 struct RoutesListView: View {
-    @EnvironmentObject var viewModel: ScheduleViewModel
+    @EnvironmentObject var scheduleViewModel: ScheduleViewModel
     @State private var isSortButtonTapped = false
 
     var body: some View {
         VStack {
-            Text("\(viewModel.fromText()) → \(viewModel.toText())")
+            Text("\(scheduleViewModel.fromText()) → \(scheduleViewModel.toText())")
                 .font(.bold24)
                 .foregroundColor(.blackDay)
                 .padding(.top, 16)
             ZStack {
-                if viewModel.routes.isEmpty {
+                if scheduleViewModel.routes.isEmpty {
                     Text(Constants.noRoutes)
                         .foregroundColor(.blackDay)
                         .font(.bold24)
@@ -31,7 +31,7 @@ struct RoutesListView: View {
     private var routesView: some View {
         ScrollView {
             LazyVStack(spacing: 8) {
-                ForEach(viewModel.routes) { route in
+                ForEach(scheduleViewModel.routes) { route in
                     NavigationLink(destination: CarrierView()) {
                         RoutesListCellView(route: route)
                     }

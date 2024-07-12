@@ -1,9 +1,9 @@
 import SwiftUI
 
 struct StoriesView: View {
-    @ObservedObject var viewModel: StoryViewModel
+    @ObservedObject var storyViewModel: StoryViewModel
     @Environment(\.presentationMode) var presentationMode
-    private var timerConfiguration: TimerConfiguration { .init(storiesCount: viewModel.stories.count) }
+    private var timerConfiguration: TimerConfiguration { .init(storiesCount: storyViewModel.stories.count) }
     private let timer = Timer.publish(every: 10, on: .main, in: .common).autoconnect()
     @State private var previousCurrentStoryIndex: Int?
     @State private var previousCurrentProgress: CGFloat?
@@ -20,7 +20,7 @@ struct StoriesView: View {
         }
         .navigationBarBackButtonHidden()
         .onAppear {
-            currentStoryIndex = viewModel.selectedStoryIndex
+            currentStoryIndex = storyViewModel.selectedStoryIndex
             markCurrentStoryAsViewed()
         }
         .onChange(of: currentStoryIndex) { newIndex in
@@ -38,7 +38,7 @@ struct StoriesView: View {
                 }
         )
         .onReceive(timer) { _ in
-            if currentStoryIndex == viewModel.stories.count - 1 {
+            if currentStoryIndex == storyViewModel.stories.count - 1 {
                 presentationMode.wrappedValue.dismiss()
             }
         }
@@ -46,7 +46,7 @@ struct StoriesView: View {
 
     private var storiesView: some View {
         ZStack(alignment: .topTrailing) {
-            StoriesTabView(stories: viewModel.stories, currentStoryIndex: $currentStoryIndex)
+            StoriesTabView(stories: storyViewModel.stories, currentStoryIndex: $currentStoryIndex)
                 .onAppear {
                     previousCurrentStoryIndex = currentStoryIndex == 0 ? currentStoryIndex : currentStoryIndex - 1
                 }
@@ -55,7 +55,7 @@ struct StoriesView: View {
                 }
 
             StoriesProgressBar(
-                storiesCount: viewModel.stories.count,
+                storiesCount: storyViewModel.stories.count,
                 timerConfiguration: timerConfiguration,
                 currentProgress: $currentProgress
             )
@@ -97,10 +97,10 @@ struct StoriesView: View {
     }
 
     private func markCurrentStoryAsViewed() {
-        viewModel.stories[currentStoryIndex].isViewed = true
+        storyViewModel.stories[currentStoryIndex].isViewed = true
     }
 }
 
 #Preview {
-    StoriesView(viewModel: StoryViewModel())
+    StoriesView(storyViewModel: StoryViewModel())
 }
