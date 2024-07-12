@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var isDarkModeOn = false
+    @AppStorage("isDarkModeOn") private var isDarkModeOn: Bool = false
 
     var body: some View {
         VStack(spacing: 0) {
